@@ -7,6 +7,14 @@ up to date.
 
 ## MacOS
 
+Hint: You can open a Terminal window by pressing `COMMAND + SPACE` and then
+typing `Terminal`.
+
+Before you can do proper software development on your Mac, you must download
+XCode from the AppStore (this will take very long). Once installed, just open
+XCode and accept the license agreement, then close it again. Then open a
+Terminal window and type `xcode-select --install`
+
 Python is already installed on your Mac, but chances are that you have a very
 old version. In your Terminal app, type `python --version` and you should see
 something like `Python 2.7.3`.
