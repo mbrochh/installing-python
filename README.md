@@ -32,7 +32,10 @@ Execute the following command in your Terminal:
 Now install Python via the following commands. Note: We assume that you are
 using the standard Terminal with bash. If you use some other Terminal or some
 other shell, you might have to replace `~/.bashrc` in the code below with
-something else like `~/.zshrc` if you use ZSH, for example):
+something else like `~/.zshrc` if you use ZSH, for example).
+
+Hint: Copy & paste the following commands into your Terminal window line by line.
+Do not copy & paste the entire script at once.
 
 ```
 brew update
@@ -45,12 +48,12 @@ pip install pip --upgrade
 python --version
 ```
 
-The last command should print the correct Python version `Python 3.8.1`.
+The last command should print the correct Python version: `Python 3.8.1`.
 
 **Bonus**:
 
 This is not necessary for most beginner classes, but eventually you will want
-to install Virtualenvwrapper. You can install it like so:
+to install `virtualenvwrapper`. You can install it like so:
 
 ```
 pip install virtualenvwrapper
