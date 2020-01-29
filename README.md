@@ -67,7 +67,34 @@ You should see something like `16.7.9`.
 
 # Windows
 
-Coming soon...
+Download the latest Python version from https://python.org/downloads
+
+Execute the downloaded `*.exe` file. When the installation wizard appears, make sure to check the box "Add Python 3.X to PATH", then click at "Install Now".
+
+At the end of the installation, click at the option "Disable path length limit", then close the wizard.
+
+Now go to https://git-scm.com/download/win and download Git.
+
+
+Execute the downloaded `*.exe` file. In the installation wizard, just click "Next" on every screen, no need to change anything.
+
+In the Windows Startmenu search for "Git" and open "Git Bash".
+
+Type `touch .bash_profile` then type `notepad .bash_profile` and paste the following line at the end of the file: `alias python='winpty python.exe'`, save the file in notepad and close notepad. Also close Git Bash.
+
+Now search for Git again in the Startmenu and start it one more time.
+
+Type `python` into the Git Bash terminal. If everything went well, you should see the Python prompt. Exit the Python prompt by typing `exit()`.
+
+Now type the following things into your Git Bash terminal:
+
+```
+pip install pip --upgrade
+pip install virtualenv
+pip install virtualenvwrapper-win
+```
+
+After you have done this, you should close the Git Bash window, open a new one and type `mkvirtualenv.bat` and see if the mkvirtualenv program can be found. If you get some output, congratulations, you are done!
 
 # VSCode
 
@@ -75,7 +102,9 @@ In my classes, you will need a text editor to write your code. The best free
 text editor to write code these days is VSCode. Please download and install it
 from here: https://code.visualstudio.com/download
 
-Once installed, open VSCode. Now press `COMMAND + SHIFT + P` and type `PATH`.
+If you are on Windows: when you start the installation wizard, make sure to activate all checkboxes under "Other" on the "Select Additional Tasks" page.
+
+If you are on MacOS: Once installed, open VSCode. Now press `COMMAND + SHIFT + P` and type `PATH`.
 You should see an option called `Shell Command: Install 'code' command in PATH`.
 Select that option.
 
@@ -88,3 +117,5 @@ click at the `Install` button: https://marketplace.visualstudio.com/items?itemNa
 Alternatively, in VSCode, you can press `COMMAND + SHIFT + X` to get to the
 Extensions manager and search for Python and then install the one named
 `Python` (with 14+M downloads).
+
+If you are on Windows, you should also do the following: In VSCode, click at "Terminal > New Terminal". A little window will show up at the bottom of the editor. You should see a drop down list where the active item is "1: powershell". CLick at this drop down list and select "Select Default Shell". Some options will show up at the top of the screen. Select "Git Bash".
