@@ -56,14 +56,21 @@ This is not necessary for most beginner classes, but eventually you will want
 to install `virtualenvwrapper`. You can install it like so:
 
 ```
-pip install virtualenvwrapper
-echo -e "export VIRTUAL_ENV_DISABLE_PROMPT=" >> ~/.bashrc
-echo -e "export VIRTUALENVWRAPPER_PYTHON=$(which python)" >> ~/.bashrc
-echo -e "source /usr/local/bin/virtualenvwrapper.sh" >> ~/.bashrc
+brew install pyenv-virtualenvwrapper
+echo -e 'export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"' >> ~/.bashrc
+echo -e "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.bashrc
+echo -e "pyenv virtualenvwrapper_lazy" >> ~/.bashrc
 ```
 
-Close your Terminal, then re-open your Terminal and type `virtualenv --version`.
-You should see something like `16.7.9`.
+Close your Terminal, then re-open your Terminal and type `which workon`.
+You should see something like this:
+
+```
+workon () {
+	virtualenvwrapper_load
+	workon "$@"
+}
+```
 
 # Windows
 
