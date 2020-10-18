@@ -102,7 +102,7 @@ Next search for the "Microsoft Store". Then search for "Ubuntu". Select "Ubuntu 
 and click at "Get". It is a 444MB download and should take around 5-10 minutes.
 
 Once it is downloaded, click at "Launch". A Terminal window will appear and you will have
-to choce your Ubuntu username and password. It is best to use the same username and 
+to choose your Ubuntu username and password. It is best to use the same username and 
 password that you also use for your Windows account. Once you have set your password,
 you can close the window. Next, we will install a better Terminal for you.
 
