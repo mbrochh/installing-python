@@ -1,9 +1,12 @@
 # Installing Python
 
-This repo simply is a few notes on how to install Python on various operating
-systems. As I teach Python classes regularly, I tend to get to know early if
-something has changed over time, so hopefully I will be able to keep this guide
-up to date.
+This repo contains just a few notes on how to install Python on various operating
+systems. As I teach Python classes regularly, I tend to get to see all the quirks
+and pitfalls during Python installations, so hopefully I will be able to keep this 
+guide up to date.
+
+To get your machine up and running, please follow the instructions for your operating 
+system (either MacOS or Windows 10) AND the instructions for VSCode at the very bottom.
 
 ## MacOS
 
@@ -34,7 +37,7 @@ using the standard Terminal with bash. If you use some other Terminal or some
 other shell, you might have to replace `~/.bashrc` in the code below with
 something else like `~/.zshrc` if you use ZSH, for example).
 
-Hint: Copy & paste the following commands into your Terminal window line by line.
+IMPORTANT: Always copy & paste code snippets into your Terminal window line by line.
 Do not copy & paste the entire script at once.
 
 ```
@@ -72,36 +75,80 @@ workon () {
 }
 ```
 
-# Windows
+# Windows 10
 
-Download the latest Python version from https://python.org/downloads
+If you have a computer that does not run Windows 10, but an older version, please 
+try to upgrade your computer to Windows 10. 
 
-Execute the downloaded `*.exe` file. When the installation wizard appears, make sure to check the box "Add Python 3.X to PATH", then click at "Install Now".
+Windows 10 has something called "Windows Subsystem for Linux" (WSL), which allows
+us to run Ubuntu inside Windows seamlessly. It is really quite amazing.
 
-At the end of the installation, click at the option "Disable path length limit", then close the wizard.
+Most of my instructions here were stolen from this post: https://pbpython.com/wsl-python.html
 
-Now go to https://git-scm.com/download/win and download Git.
+Click at the Windows Search in your Start Menu and search for "Powershell", then right-click it
+and chose "Run as administrator".
 
-
-Execute the downloaded `*.exe` file. In the installation wizard, just click "Next" on every screen, no need to change anything.
-
-In the Windows Startmenu search for "Git" and open "Git Bash".
-
-Type `touch .bash_profile` then type `notepad .bash_profile` and paste the following line at the end of the file: `alias python='winpty python.exe'`, save the file in notepad and close notepad. Also close Git Bash.
-
-Now search for Git again in the Startmenu and start it one more time.
-
-Type `python` into the Git Bash terminal. If everything went well, you should see the Python prompt. Exit the Python prompt by typing `exit()`.
-
-Now type the following things into your Git Bash terminal:
+IMPORTANT: Always copy & paste code snippets into your Terminal window line by line.
+Do not copy & paste the entire script at once.
 
 ```
-pip install pip --upgrade
-pip install virtualenv
-pip install virtualenvwrapper-win
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 ```
 
-After you have done this, you should close the Git Bash window, open a new one and type `mkvirtualenv.bat` and see if the mkvirtualenv program can be found. If you get some output, congratulations, you are done!
+Now restart your computer.
+
+Next search for the "Microsoft Store". Then search for "Ubuntu". Select "Ubuntu 20.04 LTS" 
+and click at "Get". It is a 444MB download and should take around 5-10 minutes.
+
+Once it is downloaded, click at "Launch". A Terminal window will appear and you will have
+to choce your Ubuntu username and password. It is best to use the same username and 
+password that you also use for your Windows account. Once you have set your password,
+you can close the window. Next, we will install a better Terminal for you.
+
+Open the "Microsoft Store" again and search for "Windows Terminal". Click at "Get" again
+and once installed, click at "Launch". When the Terminal launches, type `wsl`. You 
+should remember this, this is how you get into Ubuntu: You launch "Windows Terminal" and
+then you type `wsl`.
+
+Now that you are logged into Ubuntu, let's install quite a lot of software:
+
+IMPORTANT: Always copy & paste code snippets into your Terminal window line by line.
+Do not copy & paste the entire script at once. 
+
+You don't need to copy & paste the lines that start with a `#`, those are just 
+comments for your better understanding.
+
+```
+sudo apt update
+sudo apt upgrade
+# the above will take 5-10 minutes
+sudo apt-get install python3-pip git gcc make openssl libssl-dev libbz2-dev libreadline-dev libsqlite3-dev
+# the above will take 5-10 minutes
+curl https://pyenv.run | bash
+# the above will take 2-6 minutes
+sudo apt-get install virtualenv virtualenvwrapper
+mkdir ~/virtualenvs
+echo -e "export WORKON_HOME=$HOME/virtualenvs" >> ~/.bashrc
+echo -e "VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3" >> ~/.bashrc
+echo -e ". /usr/share/virtualenvwrapper/virtualenvwrapper.sh" >> ~/.bashrc
+# for the next command, replace `{USERNAME}` (incl the braces) with your username
+# for example, if your username is bob, then the command should be
+# echo -e 'export PATH="/home/bob/.pyenv/bin:$PATH"' >> ~/.bashrc
+echo -e 'export PATH="/home/{USERNAME}/.pyenv/bin:$PATH"' >> ~/.bashrc
+echo -e 'eval "$(pyenv init -)"' >> ~/.bashrc
+echo -e 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+At this point, everything should be installed. To verify, you can
+try the following things:
+
+Type `python3 --version` - you should see the Python version.
+
+Type `mkvirtualenv` - you should see some help text about this command.
+
+Type `pyenv` - you should see some help text about this command.
 
 # VSCode
 
@@ -121,8 +168,12 @@ Terminal window and type `code` and it should start VSCode.
 Finally, you should install the Python extension. You can visit this URL and
 click at the `Install` button: https://marketplace.visualstudio.com/items?itemName=ms-python.python
 
-Alternatively, in VSCode, you can press `COMMAND + SHIFT + X` to get to the
-Extensions manager and search for Python and then install the one named
-`Python` (with 14+M downloads).
+If you are on Windows, you should also install the WSL extension. You can visit
+this URL and click at the `Install` button: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack
 
-If you are on Windows, you should also do the following: In VSCode, click at "Terminal > New Terminal". A little window will show up at the bottom of the editor. You should see a drop down list where the active item is "1: powershell". CLick at this drop down list and select "Select Default Shell". Some options will show up at the top of the screen. Select "Git Bash".
+If the links above don't seem to work for you, you can install the extensions 
+directly from withinin VSCode. You can press `COMMAND + SHIFT + X` to get to the
+Extensions manager and search for Python and then install the one named
+`Python` (with 14+M downloads). 
+
+If you are on Windows, you also need to search for "Remote WSL" and install that one.
