@@ -78,15 +78,19 @@ workon () {
 # Windows 10
 
 If you have a computer that does not run Windows 10, but an older version, please 
-try to upgrade your computer to Windows 10. 
+try to upgrade your computer to Windows 10.
 
 Windows 10 has something called "Windows Subsystem for Linux" (WSL), which allows
 us to run Ubuntu inside Windows seamlessly. It is really quite amazing.
 
 Most of my instructions here were stolen from this post: https://pbpython.com/wsl-python.html
 
+---
+
 Click at the Windows Search in your Start Menu and search for "Powershell", then right-click it
 and chose "Run as administrator".
+
+![Open Poweshell](powershell.PNG?raw=true "Open Poweshell")
 
 IMPORTANT: Always copy & paste code snippets into your Terminal window line by line.
 Do not copy & paste the entire script at once.
@@ -98,18 +102,36 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 
 Now restart your computer.
 
-Next search for the "Microsoft Store". Then search for "Ubuntu". Select "Ubuntu 20.04 LTS" 
-and click at "Get". It is a 444MB download and should take around 5-10 minutes.
+Next search for the `Microsoft Store`. 
 
-Once it is downloaded, click at "Launch". A Terminal window will appear and you will have
+![Open Microsoft Store](store.PNG?raw=true "Open Microsoft Store")
+
+Then search for `Ubuntu`. Select `Ubuntu 20.04 LTS` 
+and click at `Get`. It is a 444MB download and should take around 5-10 minutes.
+
+![Install Ubuntu](ubuntu.PNG?raw=true "Install Ubuntu")
+
+Once it is downloaded, click at "Launch". 
+
+A Terminal window will appear and you will have
 to choose your Ubuntu username and password. It is best to use the same username and 
 password that you also use for your Windows account. Once you have set your password,
-you can close the window. Next, we will install a better Terminal for you.
+you can close the window. 
 
-Open the "Microsoft Store" again and search for "Windows Terminal". Click at "Get" again
-and once installed, click at "Launch". When the Terminal launches, type `wsl`. You 
-should remember this, this is how you get into Ubuntu: You launch "Windows Terminal" and
-then you type `wsl`.
+![Launch Ubuntu](ubuntu-terminal.PNG?raw=true "Launch Ubuntu")
+
+Next, we will install a better Terminal for you.
+
+Open the `Microsoft Store` again and search for `Windows Terminal`. Click at `Get`.
+Once installed, click at `Launch`. When the Terminal launches, type `wsl`. 
+
+![Install Windows Terminal](windows-terminal.PNG?raw=true "Install Windows Terminal")
+
+You 
+should remember this, this is how you get into Ubuntu: You launch `Windows Terminal` and
+then you type `wsl`. When you do, it should look like this:
+
+![Launch WSL](windows-terminal-wsl.PNG?raw=true "Launch WSL")
 
 Now that you are logged into Ubuntu, let's install quite a lot of software:
 
@@ -133,15 +155,19 @@ curl https://pyenv.run | bash
 sudo apt-get install virtualenv virtualenvwrapper
 # the above should be quite fast
 
+# all steps above can be repeated many times if anything goes wrong
+
+# the steps below should only be done once:
+# if anything goes wrong, you must first restore the backup of the .bashrc file like so:
+# cp ~/.bashrc.backup ~/.bashrc
+# then you can repeat the steps below
+
 cp ~/.bashrc ~/.bashrc.backup
 mkdir ~/virtualenvs
 echo -e "export WORKON_HOME=$HOME/virtualenvs" >> ~/.bashrc
 echo -e "VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3" >> ~/.bashrc
 echo -e ". /usr/share/virtualenvwrapper/virtualenvwrapper.sh" >> ~/.bashrc
-# for the next command, replace `{USERNAME}` (incl the braces) with your username
-# for example, if your username is bob, then the command should be
-# echo -e 'export PATH="/home/bob/.pyenv/bin:$PATH"' >> ~/.bashrc
-echo -e 'export PATH="/home/{USERNAME}/.pyenv/bin:$PATH"' >> ~/.bashrc
+echo -e 'export PATH="~/.pyenv/bin:~/.local/bin:$PATH"' >> ~/.bashrc
 echo -e 'eval "$(pyenv init -)"' >> ~/.bashrc
 echo -e 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 source ~/.bashrc
@@ -166,6 +192,8 @@ from here: https://code.visualstudio.com/download
 
 If you are on Windows: when you start the installation wizard, make sure to activate all checkboxes under "Other" on the "Select Additional Tasks" page.
 
+![Install VSCode](vscode.PNG?raw=true "Install VSCode")
+
 If you are on MacOS: Once installed, open VSCode. Now press `COMMAND + SHIFT + P` and type `PATH`.
 You should see an option called `Shell Command: Install 'code' command in PATH`.
 Select that option.
@@ -189,10 +217,18 @@ Open the `Windows Terminal`.
 
 Type `pip3 install jupyter`. The installation will take a while.
 
-Type `jupyter notebook`. You will see a red error message, but that is OK. Right above the error message, you will find two URLs. Copy the one with `localhost:8888` and paste it into Google Chrome. NOTE: Jupyter has now "taken over" the control over your terminal and is running a web-server. You cannot enter any commands into this terminal window any more. If you want to do anything in a terminal, you must open a new terminal window, while Jupyter keeps running in this terminal window. If you ever want to stop Jupyter, you can press `CTRL+C` in the terminal window, and then confirm with `y`.
+Type `jupyter notebook`. You will see a red error message, but that is OK. Right above the error message, you will find two URLs. Copy the one with `localhost:8888` and paste it into Google Chrome. 
+
+![Launch Jupyter](jupyter.PNG?raw=true "Launch Jupyter")
+
+NOTE: Jupyter has now "taken over" the control over your terminal and is running a web-server. You cannot enter any commands into this terminal window any more. If you want to do anything in a terminal, you must open a new terminal window, while Jupyter keeps running in this terminal window. If you ever want to stop Jupyter, you can press `CTRL+C` in the terminal window, and then confirm with `y`.
 
 You will now see the Jupyter Notebook. 
 
 You might want to click at `New` and then `Folder`. This will create a folder called `Untitled Folder` in your home directory. You can then click the checkbox next to that folder and select `Rename` at the top-left. You should name it `Notebooks`. Now click into that folder.
 
-Finally, at the top right, click at "New" and select "Python 3". You can now start working on a notebook. The notebook will be saved inside whatever folder you clicked at, so in our case it should be inside the `Notebooks` folder. In the future, you can open that notebook again.
+Finally, at the top right, click at "New" and select "Python 3". 
+
+![Launch Notebook](jupyter-new.PNG?raw=true "Launch Notebook")
+
+You can now start working on a notebook. The notebook will be saved inside whatever folder you clicked at, so in our case it should be inside the `Notebooks` folder. In the future, you can open that notebook again.
