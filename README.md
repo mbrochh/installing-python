@@ -123,11 +123,17 @@ comments for your better understanding.
 sudo apt update
 sudo apt upgrade
 # the above will take 5-10 minutes
+
 sudo apt-get install python3-pip git gcc make openssl libssl-dev libbz2-dev libreadline-dev libsqlite3-dev
 # the above will take 5-10 minutes
+
 curl https://pyenv.run | bash
 # the above will take 2-6 minutes
+
 sudo apt-get install virtualenv virtualenvwrapper
+# the above should be quite fast
+
+cp ~/.bashrc ~/.bashrc.backup
 mkdir ~/virtualenvs
 echo -e "export WORKON_HOME=$HOME/virtualenvs" >> ~/.bashrc
 echo -e "VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3" >> ~/.bashrc
@@ -145,6 +151,8 @@ At this point, everything should be installed. To verify, you can
 try the following things:
 
 Type `python3 --version` - you should see the Python version.
+
+Type `pip3 --version` - you should see the Python version.
 
 Type `mkvirtualenv` - you should see some help text about this command.
 
@@ -171,9 +179,20 @@ click at the `Install` button: https://marketplace.visualstudio.com/items?itemNa
 If you are on Windows, you should also install the WSL extension. You can visit
 this URL and click at the `Install` button: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack
 
-If the links above don't seem to work for you, you can install the extensions 
-directly from withinin VSCode. You can press `COMMAND + SHIFT + X` to get to the
-Extensions manager and search for Python and then install the one named
-`Python` (with 14+M downloads). 
+After all this is done, close all terminals and all VSCode windows, then open the `Windows Terminal` and type `code`. As a result, VSCode should open up.
 
-If you are on Windows, you also need to search for "Remote WSL" and install that one.
+# Jupyter Notebook
+
+In order to install the Jupyter Notebook on your local machine, you must follow all the steps above, then you can try the following:
+
+Open the `Windows Terminal`.
+
+Type `pip3 install jupyter`. The installation will take a while.
+
+Type `jupyter notebook`. You will see a red error message, but that is OK. Right above the error message, you will find two URLs. Copy the one with `localhost:8888` and paste it into Google Chrome. NOTE: Jupyter has now "taken over" the control over your terminal and is running a web-server. You cannot enter any commands into this terminal window any more. If you want to do anything in a terminal, you must open a new terminal window, while Jupyter keeps running in this terminal window. If you ever want to stop Jupyter, you can press `CTRL+C` in the terminal window, and then confirm with `y`.
+
+You will now see the Jupyter Notebook. 
+
+You might want to click at `New` and then `Folder`. This will create a folder called `Untitled Folder` in your home directory. You can then click the checkbox next to that folder and select `Rename` at the top-left. You should name it `Notebooks`. Now click into that folder.
+
+Finally, at the top right, click at "New" and select "Python 3". You can now start working on a notebook. The notebook will be saved inside whatever folder you clicked at, so in our case it should be inside the `Notebooks` folder. In the future, you can open that notebook again.
