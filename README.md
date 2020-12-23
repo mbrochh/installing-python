@@ -213,7 +213,7 @@ After all this is done, close all terminals and all VSCode windows, then open th
 
 In order to install the Jupyter Notebook on your local machine, you must follow all the steps above, then you can try the following:
 
-Open the `Windows Terminal`.
+Open the `Windows Terminal` and type `wsl` in order to into your Ubuntu shell.
 
 Type `pip3 install jupyter`. The installation will take a while.
 
