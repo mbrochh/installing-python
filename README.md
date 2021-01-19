@@ -42,9 +42,22 @@ Do not copy & paste the entire script at once.
 
 ```
 brew update
-brew install pyenv
-pyenv install 3.8.1
-echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile
+brew reinstall zlib bzip2
+echo -e 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bash_profile
+echo -e 'export PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
+echo -e 'eval "$(pyenv init -)"' >> ~/.bash_profile
+echo -e 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_profile
+echo -e 'export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"' >> ~/.bash_profile
+echo -e 'export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"' >> ~/.bash_profile
+
+CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix bzip2)/include -I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include" LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix readline)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix bzip2)/lib" pyenv install --patch 3.8.1 < <(curl -sSL https://github.com/python/cpython/commit/8ea6353.patch\?full_index\=1)
+
+brew install pyenv-virtualenvwrapper
+echo -e 'export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"' >> ~/.bash_profile
+echo -e "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.bash_profile
+echo -e "pyenv virtualenvwrapper_lazy" >> ~/.bash_profile
+echo -e "source .bash_profile" >> ~/.zprofile
+
 source ~/.bash_profile
 pyenv global 3.8.1
 pip install pip --upgrade
@@ -52,18 +65,6 @@ python --version
 ```
 
 The last command should print the correct Python version: `Python 3.8.1`.
-
-**Bonus**:
-
-This is not necessary for most beginner classes, but eventually you will want
-to install `virtualenvwrapper`. You can install it like so:
-
-```
-brew install pyenv-virtualenvwrapper
-echo -e 'export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"' >> ~/.bash_profile
-echo -e "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.bash_profile
-echo -e "pyenv virtualenvwrapper_lazy" >> ~/.bash_profile
-```
 
 Close your Terminal, then re-open your Terminal and type `which workon`.
 You should see something like this:
@@ -74,6 +75,8 @@ workon () {
 	workon "$@"
 }
 ```
+
+Now open a new Terminal window and try `which workon` again.
 
 # Windows 10
 
