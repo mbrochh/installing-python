@@ -44,8 +44,8 @@ Do not copy & paste the entire script at once.
 brew update
 brew install pyenv
 pyenv install 3.8.1
-echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
-source ~/.bashrc
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile
+source ~/.bash_profile
 pyenv global 3.8.1
 pip install pip --upgrade
 python --version
@@ -60,9 +60,9 @@ to install `virtualenvwrapper`. You can install it like so:
 
 ```
 brew install pyenv-virtualenvwrapper
-echo -e 'export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"' >> ~/.bashrc
-echo -e "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.bashrc
-echo -e "pyenv virtualenvwrapper_lazy" >> ~/.bashrc
+echo -e 'export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"' >> ~/.bash_profile
+echo -e "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.bash_profile
+echo -e "pyenv virtualenvwrapper_lazy" >> ~/.bash_profile
 ```
 
 Close your Terminal, then re-open your Terminal and type `which workon`.
