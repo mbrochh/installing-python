@@ -13,10 +13,14 @@ system (either MacOS or Windows 10) AND the instructions for VSCode at the very 
 Hint: You can open a Terminal window by pressing `COMMAND + SPACE` and then
 typing `Terminal`.
 
-Before you can do proper software development on your Mac, you must download
-XCode from the AppStore (this will take very long). Once installed, just open
-XCode and accept the license agreement, then close it again. Then open a
-Terminal window and type `xcode-select --install`
+In your Terminal window, execute the following commands one after the other: 
+
+```
+rm -rf /Library/Developer/CommandLineTools
+xcode-select --install
+```
+
+This will take a while (~30min).
 
 Python is already installed on your Mac, but chances are that you have a very
 old version. In your Terminal app, type `python --version` and you should see
