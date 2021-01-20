@@ -46,18 +46,11 @@ Do not copy & paste the entire script at once.
 
 ```
 brew update
-brew reinstall zlib bzip2
-echo -e 'export PATH="$HOME/.pyenv/bin:$PATH"' >> ~/.bash_profile
+brew install pyenv-virtualenvwrapper
+echo -e 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
+echo -e 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
 echo -e 'export PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
 echo -e 'eval "$(pyenv init -)"' >> ~/.bash_profile
-echo -e 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_profile
-
-export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
-
-CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix bzip2)/include -I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include" LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix readline)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix bzip2)/lib" pyenv install --patch 3.8.1 < <(curl -sSL https://github.com/python/cpython/commit/8ea6353.patch\?full_index\=1)
-
-brew install pyenv-virtualenvwrapper
 echo -e 'export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"' >> ~/.bash_profile
 echo -e "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.bash_profile
 echo -e "pyenv virtualenvwrapper_lazy" >> ~/.bash_profile
