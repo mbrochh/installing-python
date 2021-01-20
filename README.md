@@ -10,6 +10,9 @@ system (either MacOS or Windows 10) AND the instructions for VSCode at the very 
 
 ## MacOS
 
+First go to the App Store and install XCode. This will take a long time (~2hrs). Once
+it is installed, open XCode and aggree to the license agreement, then close it.
+
 Hint: You can open a Terminal window by pressing `COMMAND + SPACE` and then
 typing `Terminal`.
 
