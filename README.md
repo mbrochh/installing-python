@@ -49,7 +49,7 @@ Do not copy & paste the entire script at once.
 
 ```
 brew update
-brew install pyenv-virtualenvwrapper
+brew install pyenv pyenv-virtualenvwrapper
 echo -e 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
 echo -e 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
 echo -e 'export PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
@@ -60,7 +60,11 @@ echo -e "pyenv virtualenvwrapper_lazy" >> ~/.bash_profile
 echo -e "source .bash_profile" >> ~/.zprofile
 
 source ~/.bash_profile
+# there might be some errors about virtualenvwrapper here, that's OK
+pyenv install 3.8.1
 pyenv global 3.8.1
+source ~/.bash_profile
+# this time no errors should show up
 pip install pip --upgrade
 python --version
 ```
