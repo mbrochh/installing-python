@@ -58,8 +58,10 @@ echo -e "export WORKON_HOME=$HOME/.virtualenvs" >> ~/.bash_profile
 echo -e "pyenv virtualenvwrapper_lazy" >> ~/.bash_profile
 echo -e "source .bash_profile" >> ~/.zprofile
 
+# the following command might throw some errors about virtualenvwrapper
+# that's OK, just ignore the errors
 source ~/.bash_profile
-# there might be some errors about virtualenvwrapper here, that's OK
+
 pyenv install 3.8.1
 pyenv global 3.8.1
 source ~/.bash_profile
