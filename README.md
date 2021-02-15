@@ -42,7 +42,9 @@ Execute the following command in your Terminal:
 Now install Python via the following commands.
 
 IMPORTANT: Always copy & paste code snippets into your Terminal window line by line.
-Do not copy & paste the entire script at once.
+Do not copy & paste the entire script at once. Furthermore, if you get stuck at any step
+you don't have to repeat the earlier steps. You can just try again and continue from
+the step that has failed (after seeking some help).
 
 ```
 brew update
