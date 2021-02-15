@@ -84,7 +84,9 @@ workon () {
 }
 ```
 
-Now open a new Terminal window and try `which workon` again.
+Now open a new Terminal window and try `which workon` again. You should see the same
+output as above again. At this point, Python and virtualenv is correctly installed
+and every time when you open a new Terminal, everything will be correctly loaded.
 
 # Windows 10
 
