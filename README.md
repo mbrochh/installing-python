@@ -64,8 +64,10 @@ source ~/.bash_profile
 
 pyenv install 3.8.1
 pyenv global 3.8.1
+
+# this time no errors about virtualenvwrapper should show up
 source ~/.bash_profile
-# this time no errors should show up
+
 pip install pip --upgrade
 python --version
 ```
