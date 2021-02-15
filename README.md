@@ -39,10 +39,7 @@ Execute the following command in your Terminal:
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Now install Python via the following commands. Note: We assume that you are
-using the standard Terminal with bash. If you use some other Terminal or some
-other shell, you might have to replace `~/.bashrc` in the code below with
-something else like `~/.zshrc` if you use ZSH, for example).
+Now install Python via the following commands.
 
 IMPORTANT: Always copy & paste code snippets into your Terminal window line by line.
 Do not copy & paste the entire script at once.
