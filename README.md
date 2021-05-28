@@ -48,7 +48,7 @@ the step that has failed (after seeking some help).
 
 ```
 brew update
-brew install pyenv pyenv-virtualenvwrapper
+brew install zlib bzip2 pyenv pyenv-virtualenvwrapper
 echo -e 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
 echo -e 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
 echo -e 'export PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
