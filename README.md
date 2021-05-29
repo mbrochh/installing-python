@@ -56,6 +56,7 @@ echo -e 'export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"' 
 echo -e 'export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"' >> ~/.bash_profile
 echo -e 'eval "$(pyenv init --path)"' >> ~/.bash_profile
 echo -e 'eval "$(pyenv init -)"' >> ~/.bash_profile
+echo -e 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_profile
 echo -e "source .bash_profile" >> ~/.zprofile
 
 # the following command might throw some errors about virtualenvwrapper
