@@ -63,10 +63,14 @@ echo -e "source .bash_profile" >> ~/.zprofile
 # that's OK, just ignore the errors
 source ~/.bash_profile
 
-# the next command is very long, make sure that you correctly copy the entire line
-CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix bzip2)/include -I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include" LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix readline)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix bzip2)/lib" pyenv install --patch 3.8.1 < <(curl -sSL https://github.com/python/cpython/commit/8ea6353.patch\?full_index\=1)
+# first try this:
+pyenv install 3.10.6
 
-pyenv global 3.8.1
+# if the above failed, try this instead:
+# the next command is very long, make sure that you correctly copy the entire line
+CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix bzip2)/include -I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include" LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix readline)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix bzip2)/lib" pyenv install --patch 3.10.6 < <(curl -sSL https://github.com/python/cpython/commit/8ea6353.patch\?full_index\=1)
+
+pyenv global 3.10.6
 
 # this time no errors about virtualenvwrapper should show up
 source ~/.bash_profile
