@@ -1,3 +1,5 @@
+NOTE: This is no longer the best way to get started. Read [this](https://mbrochh.io/Python/installing-python) instead.
+
 # Installing Python
 
 This repo contains just a few notes on how to install Python on various operating
